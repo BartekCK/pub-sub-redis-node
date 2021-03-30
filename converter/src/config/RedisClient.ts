@@ -1,8 +1,13 @@
 import { createClient, RedisClient as Client } from 'redis';
 
+// services
+import { CommandManager } from '../services/CommandManager';
+
 class RedisClient {
     private readonly client: Client;
     private readonly channelName: string;
+    private command: CommandManager = new CommandManager();
+
     constructor() {
         if (!process.env.CHANEL_NAME) {
             throw new Error('Define all ENV');
@@ -10,7 +15,8 @@ class RedisClient {
         this.client = createClient({ host: process.env.DV_HOST });
         this.channelName = process.env.CHANEL_NAME;
         this.client.on('message', (channel: string, message: string) => {
-            console.log('Received data :' + message);
+            console.log('Received data:' + message);
+            this.command.handleMessage(message);
         });
     }
 

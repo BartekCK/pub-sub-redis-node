@@ -20,6 +20,3 @@ services:
       - redisdb
     links:
       - redisdb
-    ports:
-      - published: 3001
-        target: 3001

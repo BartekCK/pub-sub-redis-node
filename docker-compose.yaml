@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  redisdb:
+    image: redis:6.0.9
+    expose:
+      - 6379
+    ports:
+      - published: 6379
+        target: 6379
+  subscriber:
+    image: subscriber:v1.0
+    container_name: subscriber
+    build: subscriber/
+    restart: always
+    env_file: subscriber/.env
+    environment:
+      DB_HOST: redisdb
+    depends_on:
+      - redisdb
+    links:
+      - redisdb
+    ports:
+      - published: 3001
+        target: 3001

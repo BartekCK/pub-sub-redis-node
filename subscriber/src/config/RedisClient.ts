@@ -12,7 +12,7 @@ class RedisClient {
         if (!process.env.CHANEL_NAME) {
             throw new Error('Define all ENV');
         }
-        this.client = createClient({ host: process.env.DV_HOST });
+        this.client = createClient({ host: process.env.DB_HOST });
         this.channelName = process.env.CHANEL_NAME;
         this.client.on('message', (channel: string, message: string) => {
             console.log('Received data:' + message);

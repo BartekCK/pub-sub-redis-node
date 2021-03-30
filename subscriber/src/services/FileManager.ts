@@ -2,7 +2,7 @@ import fs from 'fs';
 import { join } from 'path';
 
 export class FileManager {
-    private filePath: string = join('../', this.fileName);
+    private filePath: string = join(__dirname,'../../', this.fileName);
 
     constructor(private fileName: string) {}
 

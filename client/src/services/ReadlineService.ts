@@ -1,9 +1,12 @@
 import { createInterface, Interface } from 'readline';
 
+// interfaces
+import { IMsgRepository } from '../interfaces';
+
 export class ReadlineService {
     private readonly readLine: Interface;
 
-    constructor() {
+    constructor(private readonly msgRepository: IMsgRepository) {
         this.readLine = createInterface({
             input: process.stdin,
             output: process.stdout,
@@ -20,7 +23,7 @@ export class ReadlineService {
             if (result === 'close') {
                 this.readLine.close();
             }
-            console.log('Your answer ' + result);
+            this.msgRepository.publishMessage(result);
             this.readlineExec();
         });
     }

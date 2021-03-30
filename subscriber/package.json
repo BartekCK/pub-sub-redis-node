@@ -1,5 +1,5 @@
 {
-  "name": "converter",
+  "name": "subscriber",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",

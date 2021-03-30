@@ -13,17 +13,18 @@ export class ReadlineService {
         });
 
         this.readLine.on('close', () => {
-            console.log('ReadlineService close');
+            console.log('\nReadlineService close');
             process.exit(0);
         });
     }
 
     readlineExec() {
-        this.readLine.question('Give me task\n', (result: string) => {
+        this.readLine.question('Give me task:\n', (result: string) => {
             if (result === 'close') {
                 this.readLine.close();
             }
             this.msgRepository.publishMessage(result);
+            console.log('--------------');
             this.readlineExec();
         });
     }

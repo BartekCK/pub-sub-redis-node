@@ -10,5 +10,5 @@ const readline = new ReadlineService(new MsgRepository());
 readline.readlineExec();
 
 process.on('exit', function () {
-    console.log('App will close down ...');
+    console.log('\nApp will close down ...');
 });

@@ -44,3 +44,6 @@ cd ./client
 npm i
 npm start:dev
 ```
+# Example
+![alt text](https://i.ibb.co/mqBqSbV/Zrzut-ekranu-2021-03-31-o-00-13-25.png)
+
